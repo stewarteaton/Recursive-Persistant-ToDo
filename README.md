@@ -10,6 +10,7 @@
 
 <br/>
 
+<img src='./images/desktop.png' alt='app image' />
 
 <h3>Tech Used</h3>
 <hr>

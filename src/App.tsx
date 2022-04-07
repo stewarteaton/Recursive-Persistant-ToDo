@@ -59,7 +59,8 @@ const App: React.FC = () =>  {
       <div className='todos'>
             {toDos.map((todo) => (
                 <div className='single_todos_container'>
-                    <SingleTodo todo={todo} key={todo.id} toDos={toDos} setToDos={setToDos} isChild={false} toggleSave={toggleSave} setToggleSave={setToggleSave}/>
+                    <SingleTodo todo={todo} key={todo.id} toDos={toDos} setToDos={setToDos} 
+                    isChild={false} toggleSave={toggleSave} setToggleSave={setToggleSave}/>
                 </div>
             ))}      
         </div>    

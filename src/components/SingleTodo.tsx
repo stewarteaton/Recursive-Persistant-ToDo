@@ -22,7 +22,7 @@ const SingleTodo = ({todo, toDos, setToDos, isChild, toggleSave, setToggleSave}:
         if (isChild) handleRecursion(id, 'delete')
 
         else{
-             setToDos(toDos.filter((todo) => todo.id !== id))
+            setToDos(toDos.filter((todo) => todo.id !== id))
             waitForSave()
         }
     }
@@ -44,11 +44,11 @@ const SingleTodo = ({todo, toDos, setToDos, isChild, toggleSave, setToggleSave}:
         // Deep Copy of ToDos 
         let arr = JSON.parse(JSON.stringify(toDos)); 
         
-        if (type == 'delete') {
+        if (type ==='delete') {
             // Remove Node from Tree
             arr.forEach((item:ToDo) => {
                 function removeFromTree(node:any, name:any) {
-                    if (node.id == name) {
+                    if (node.id === name) {
                       node = undefined
                     } else {
                       node.children.forEach((child:any, id:any) => {
@@ -63,15 +63,15 @@ const SingleTodo = ({todo, toDos, setToDos, isChild, toggleSave, setToggleSave}:
             // Create or Edit Node in Tree
             let recursiveSrch = (data:any) => {
                 data.forEach((item:any) => {
-                    if (item.id == id){
-                        if (type == 'addNew') return item.children.push({id: Date.now(), todo: 'new item', isDone: false, children: [] })
+                    if (item.id === id){
+                        if (type === 'addNew') return item.children.push({id: Date.now(), todo: 'new item', isDone: false, children: [] })
 
-                        if (type == 'edit') {
+                        if (type === 'edit') {
                             item.todo = editTodo;
                             setEdit(false)
                             return
                         }
-                        if (type == 'done') return item.isDone = !item.isDone
+                        if (type === 'done') return item.isDone = !item.isDone
 
                     } 
                     if (item.children) recursiveSrch(item.children)
@@ -114,7 +114,6 @@ const SingleTodo = ({todo, toDos, setToDos, isChild, toggleSave, setToggleSave}:
                     <span className='icons' onClick={() => addSubItem( todo.id)}>
                         <Add />
                     </span>
-
                     <span className='icons' onClick={() => {
                         if (!edit && !todo.isDone) setEdit(!edit)
                     }}>
@@ -134,7 +133,8 @@ const SingleTodo = ({todo, toDos, setToDos, isChild, toggleSave, setToggleSave}:
                 <ul>
                     { todo.children.map((i)=> (
                         <li>    
-                            <SingleTodo todo={i} key={i.id} toDos={toDos} setToDos={setToDos} isChild={true} toggleSave={toggleSave} setToggleSave={setToggleSave}/>
+                            <SingleTodo todo={i} key={i.id} toDos={toDos} setToDos={setToDos} 
+                            isChild={true} toggleSave={toggleSave} setToggleSave={setToggleSave}/>
                         </li>
                     ))}
                 </ul>
